@@ -108,6 +108,8 @@ def create_car_page(request):
         if serializer.is_valid():
             serializer.save()
             return redirect("home")
+        else:
+            print(serializer.errors)
 
     return render(request, "car_app/create_car.html")
 
