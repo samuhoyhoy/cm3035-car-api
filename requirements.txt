@@ -1,0 +1,5 @@
+Django==5.2.7
+djangorestframework==3.16.1
+pandas==2.1.1
+django-bootstrap5==25.3
+gunicorn==23.0.0

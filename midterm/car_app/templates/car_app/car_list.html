@@ -1,0 +1,82 @@
+{% extends "car_app/base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Car List</h1>
+
+<form method="get" class="row g-2 mb-4">
+    <div class="col-md-3">
+        <input type="number" name="start" class="form-control" placeholder="Start year" value="{{ request.GET.start }}">
+    </div>
+
+    <div class="col-md-3">
+        <input type="number" name="end" class="form-control" placeholder="End year" value="{{ request.GET.end }}">
+    </div>
+    <div class="col-md-3">
+        <select name="fuel" class="form-control">
+            <option value="">All fuels</option>
+            <option value="Gasoline">Gasoline</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Electric">Electric</option>
+        </select>
+    </div>
+    <div class="col-md-2 form-check mt-2">
+        <input type="checkbox" name="high_perf" class="form-check-input" id="highPerfCheck"
+            {% if request.GET.high_perf %}checked{% endif %}>
+        <label class="form-check-label" for="highPerfCheck">
+            High performance
+        </label>
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-primary">
+            Filter
+        </button>
+    </div>
+</form>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Model</th>
+            <th>Company</th>
+            <th>Year</th>
+            <th>Displacement (cc)</th>
+            <th>Horsepower</th>
+            <th>Torque (Nm)</th>
+            <th>Fuel</th>
+            <th>Top Speed (mph)</th>
+            <th>Acceleration</th>
+            <th>Drive Type</th>
+            <th>Gearbox</th>
+            <th>Weight (lbs)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for car in cars %}
+        <tr>
+            <td>{{ car.model }}</td>
+            <td>{{ car.company }}</td>
+            <td>{{ car.production_year }}</td>
+            <td>{{ car.displacement }}</td>
+            <td>{{ car.horsepower }}</td>
+            <td>{{ car.torque_nm }}</td>
+            <td>{{ car.fuel }}</td>
+            <td>{{ car.top_speed }}</td>
+            <td>{{ car.acceleration }}</td>
+            <td>{{ car.drive_type }}</td>
+            <td>{{ car.gearbox }}</td>
+            <td>{{ car.unladen_weight }}</td>
+            <td>
+                <form method="post" action="{% url 'delete_car_page' car.id %}">
+                    {% csrf_token %}
+                    <button class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

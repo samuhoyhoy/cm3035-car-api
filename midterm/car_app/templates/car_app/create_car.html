@@ -1,0 +1,23 @@
+{% extends "car_app/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Create New Car</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input name="model" placeholder="Model" required class="form-control mb-2">
+        <input name="series" placeholder="Series" class="form-control mb-2">
+        <input name="company" placeholder="Company" required class="form-control mb-2">
+        <input name="production_year" placeholder="Year" type="number" class="form-control mb-2">
+        <input name="fuel" placeholder="Fuel Type" class="form-control mb-2">
+        <input name="horsepower" placeholder="Horsepower" class="form-control mb-2">
+        <input name="top_speed" placeholder="Top Speed" class="form-control mb-2">
+
+        <button type="submit" class="btn btn-success">
+            Create Car
+        </button>
+    </form>
+</div>
+{% endblock %}

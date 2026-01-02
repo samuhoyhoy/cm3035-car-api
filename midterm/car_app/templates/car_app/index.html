@@ -1,0 +1,55 @@
+{% extends "car_app/base.html" %}
+
+{% block content %}
+<h1>Car Management System</h1>
+
+<h3>Pages</h3>
+<ul>
+    <li>
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'car_list' %}">
+            Car List
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'create_car_page' %}">
+            Create Car
+        </a>
+    </li>
+</ul>
+<h3>REST API Endpoints</h3>
+<ul>
+    <li>
+        <a href="/api/cars/year/?start=2010&end=2015">
+            Cars by Production year (2010 - 2015)
+        </a>
+    </li>
+    <li>
+        <a href="/api/cars/fuel/?type=Gasoline">
+            Cars by Fuel Type (Gasoline)
+        </a>
+    </li>
+    <li>
+        <a href="/api/cars/fuel/?type=Gasoline">
+            Cars by Fuel Type (Gasoline)
+        </a>
+    </li>
+    <li>
+        <a href="/api/cars/performance/">
+            High Performance Cars
+        </a>
+    </li>
+</ul>
+<h3>System Information</h3>
+<ul>
+    <li>Python version: 3.12.6</li>
+    <li>Django version: 5.2.7</li>
+    <li>Packages: Django, Django REST Framework</li>
+    <li>Admin username: admin</li>
+    <li>Admin password: admin123</li>
+</ul>
+{% endblock %}
